@@ -1,0 +1,15 @@
+TRITACTIX WEBSITE — approved changes (October 2026)
+
+1  Contact form: dark design, Name / Phone / Company / Message (all required) → consultant@tritactix.tech, plus /thank-you/ page
+2  WhatsApp button (emblem only) on every page
+3  MallOS card: kept pointing to the intake form (no change)
+4  Vercel Web Analytics script on every page
+5  Case studies: /denamo/ and /buniya/, linked from the Rebranding work card
+6  Client strip: + Mall of Egypt, KOV, The Drive, LARZ, Lendo, Wadi
+7  Founder section: skipped
+8  MallOS page: real platform screenshots + "Inside the live platform"
+9  LinkedIn + Instagram icons in every footer
+10 Arabic home page /ar/ + العربية switch in the menu
+11 Privacy notice /privacy/ + footer link + consent line under the form
+12 Downloads: Tritactix company profile + MallOS overview (Name/Phone/Company required) + Book a MallOS demo card
+13 Service pages + SEO: skipped

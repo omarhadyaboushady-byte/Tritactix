@@ -59,3 +59,12 @@
 @media(max-width:1050px){.product-hero-grid{grid-template-columns:1fr}.product-visual{min-height:500px}.product-problem-grid,.configuration-grid{grid-template-columns:1fr;gap:45px}.feature-grid{grid-template-columns:1fr 1fr}.process-grid{grid-template-columns:1fr 1fr}.product-cta-panel{grid-template-columns:1fr}}
 @media(max-width:680px){.product-hero{padding:125px 0 72px}.product-back{margin-bottom:30px}.product-emblem{width:50px;height:50px}.product-wordmark{font-size:2.7rem}.product-hero h1{font-size:clamp(3.2rem,15vw,5.2rem)}.product-hero-copy>p:not(.product-category):not(.product-by){font-size:16px}.product-actions{display:grid}.product-actions .pill{width:100%}.product-visual{min-height:460px;padding:12px;border-radius:27px}.visual-window{padding:16px}.visual-cards{grid-template-columns:1fr}.visual-card{min-height:90px}.visual-track{height:55px}.product-problem,.product-section,.product-process,.configuration{padding:80px 0}.product-problem-grid{gap:32px}.product-section-head{grid-template-columns:1fr;gap:25px}.feature-grid,.process-grid,.configuration-list{grid-template-columns:1fr}.model-row{grid-template-columns:1fr;gap:8px}.product-cta{padding-bottom:30px}.product-cta-panel{min-height:520px;padding:50px 24px;border-radius:28px}.product-cta h2{font-size:clamp(3.4rem,15vw,5.8rem)}}
 @media(prefers-reduced-motion:reduce){.visual-track i{animation:none}}
+
+/* Real screenshots */
+.shot-frame{border-radius:22px;overflow:hidden;border:1px solid rgba(16,17,18,.12);background:#fff}
+.shot-frame .bar{height:34px;display:flex;align-items:center;gap:7px;padding:0 14px;background:#edeae3}.shot-frame .bar i{width:10px;height:10px;border-radius:50%;background:#cfcac0}
+.shot-frame img{display:block;width:100%}
+.product-visual--shot{min-height:0;padding:0;background:none;border:0;box-shadow:none}.product-visual--shot::before{display:none}
+.shots{padding:20px 0 105px}.shots-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.shots-grid figure{margin:0}.shots-grid figure.wide{grid-column:1/-1}
+.shots figcaption{margin-top:12px;font-size:14px;color:#6d706d}
+@media(max-width:980px){.shots-grid{grid-template-columns:1fr}}
