@@ -225,3 +225,17 @@ h1,h2,h3,p{margin-top:0}h1,h2{margin-bottom:0;font-weight:600;letter-spacing:-.0
 .dl-card--demo{background:var(--orange);color:var(--ink);border-color:var(--orange)}.dl-card--demo small{color:var(--ink)}.dl-card--demo>p{color:rgba(16,17,18,.75)}
 .dl-btn--ink{margin-top:auto;background:var(--ink);color:var(--paper)}.dl-btn--ink i{background:var(--orange);color:var(--ink)}
 @media(max-width:980px){.dl-head,.dl-grid{grid-template-columns:1fr}}
+
+/* KSHF product card */
+.product-module--kshf{color:#F4FAF9;background:linear-gradient(150deg,#0b3443,#05202C)}
+.product-module--kshf .product-module-head>span{color:#9CF7EF}
+.product-module--kshf .product-title-lockup img{border-radius:9px}
+.kshf-visual{margin-bottom:34px;border:1px solid rgba(156,247,239,.18);border-radius:18px;overflow:hidden}
+.kshf-visual .mall-status{border-color:rgba(156,247,239,.15);color:#a9c6c4}.kshf-visual .mall-status i{background:#9CF7EF}
+.kshf-queue{padding:14px 16px;display:grid;gap:7px}
+.kshf-queue span{padding:10px 13px;border:1px solid rgba(156,247,239,.12);border-radius:12px;display:grid;grid-template-columns:52px 1fr auto;align-items:center;font-size:13px;color:#dcedea}
+.kshf-queue b{font-size:12px;color:#8fb3b0;font-weight:600}.kshf-queue em{font-style:normal;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#8fb3b0}
+.kshf-queue span.on{border-color:#9CF7EF;background:rgba(156,247,239,.08)}.kshf-queue span.on em{color:#9CF7EF}
+.kshf-markets{padding:0 16px 16px;display:grid;grid-template-columns:1fr 1.4fr;gap:10px}
+.kshf-markets span{padding:13px;border-radius:13px;background:rgba(156,247,239,.07);font-size:11px;color:#a9c6c4}
+.kshf-markets b{display:block;font-size:22px;color:#9CF7EF;margin-bottom:3px}

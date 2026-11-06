@@ -92,6 +92,7 @@ const dispatchEvents = [
   ['MallOS performance workspace', 'Real estate · active'],
   ['CommercialOS pipeline connected', 'Growth · tracking'],
   ['QuoteOS approval cycle shipped', 'Revenue · live'],
+  ['KSHF clinic workspace live', 'Healthcare · KSA'],
   ['GTM execution sprint started', 'Strategy · moving']
 ];
 
