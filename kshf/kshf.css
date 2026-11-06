@@ -1,0 +1,42 @@
+/* KSHF hero: concept C, "The K beats" */
+.kh{--pet:#05202C;--mint:#9CF7EF;position:relative;min-height:100vh;min-height:100svh;padding:150px 0 70px;overflow:hidden;color:#F4FAF9;background:radial-gradient(900px 620px at 50% 34%,#0e4654,transparent 66%),var(--pet);display:flex;flex-direction:column;justify-content:flex-end}
+.kh-stage{position:absolute;left:0;right:0;top:0;height:58%;min-height:400px}
+.kh-ring{position:absolute;left:50%;top:52%;width:520px;height:520px;border-radius:50%;border:2px solid rgba(156,247,239,.5);transform:translate(-50%,-50%) scale(.3);opacity:0;animation:kh-ring 2.4s cubic-bezier(.2,.6,.3,1) infinite}
+.kh-ring--2{animation-delay:.8s}.kh-ring--3{animation-delay:1.6s}
+@keyframes kh-ring{0%{transform:translate(-50%,-50%) scale(.3);opacity:.7}100%{transform:translate(-50%,-50%) scale(2.8);opacity:0}}
+.kh-wave{position:absolute;left:0;right:0;top:calc(52% - 150px);height:300px;overflow:hidden}
+.kh-wave{-webkit-mask:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);mask:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent)}
+.kh-wave-track{width:200%;height:100%;display:flex;animation:kh-scroll 5s linear infinite}.kh-wave-track svg{width:50%;height:100%}
+@keyframes kh-scroll{to{transform:translateX(-50%)}}
+.kh-mark{position:absolute;left:50%;top:52%;width:min(400px,40vh,64vw);transform:translate(-50%,-50%);animation:kh-in 1.2s cubic-bezier(.2,.7,.2,1) both}
+.kh-mark svg{display:block;width:100%;height:auto;filter:drop-shadow(0 0 42px rgba(156,247,239,.35));animation:kh-beat 1.2s 1.2s infinite;transform-origin:45% 50%}
+.kh-mpulse{stroke-dasharray:300;stroke-dashoffset:300;animation:kh-draw 1.4s .5s ease-out forwards}
+@keyframes kh-draw{to{stroke-dashoffset:0}}
+@keyframes kh-in{from{opacity:0;transform:translate(-50%,-40%) scale(.85)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes kh-beat{0%,100%{transform:scale(1)}8%{transform:scale(1.05)}16%{transform:scale(.995)}24%{transform:scale(1.025)}40%{transform:scale(1)}}
+.kh-copy{position:relative;z-index:2;text-align:center}
+.kh-back{position:absolute;left:0;top:-36vh;display:none}
+.kh h1{font-size:clamp(3.2rem,6.4vw,6.4rem);line-height:1;letter-spacing:-.045em;font-weight:800}
+.kh h1 span{font-family:Tajawal,"Noto Kufi Arabic","Geeza Pro",sans-serif;color:var(--mint);letter-spacing:0}
+.kh-copy>p{max-width:760px;margin:18px auto 0;color:#b9d3d0;font-size:19px;line-height:1.5}
+.kh-actions{margin-top:30px;display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+.kh-primary{background:var(--mint);border-color:var(--mint);color:var(--pet)}
+.kh-primary:hover,.kh-primary:focus-visible{background:#fff;border-color:#fff;color:var(--pet)}
+.kh-outline{background:none;border-color:rgba(244,250,249,.35);color:#F4FAF9}
+.kh-outline:hover,.kh-outline:focus-visible{border-color:var(--mint);color:var(--mint)}
+.kh-journey{list-style:none;position:relative;margin:56px auto 0;max-width:980px;display:grid;grid-template-columns:repeat(5,1fr);padding:0}
+.kh-journey::before{content:"";position:absolute;left:10%;right:10%;top:9px;height:2px;background:rgba(156,247,239,.2)}
+.kh-dot{position:absolute;top:3px;left:10%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--mint);box-shadow:0 0 18px 4px rgba(156,247,239,.7);animation:kh-trav 6s linear infinite;z-index:1}
+@keyframes kh-trav{to{left:90%}}
+.kh-journey li{position:relative;padding-top:30px;font-size:13px;color:#a9c6c4}
+.kh-journey li::before{content:"";position:absolute;left:50%;top:4px;width:12px;height:12px;margin-left:-6px;border-radius:50%;border:2px solid var(--mint);background:var(--pet)}
+.kh-journey b{display:block;color:#F4FAF9;font-weight:600;font-size:15px}
+.kshf-shot{padding:70px 0 40px}
+.kshf-shot .shot-frame{max-width:1180px;margin:0 auto}
+.product-kshf .kshf-proof{padding:30px 0 70px}
+@media(max-width:760px){
+ .kh{padding:120px 0 50px}.kh-stage{height:46%;min-height:300px}.kh-ring{width:300px;height:300px}.kh-wave{height:200px;top:calc(52% - 100px)}
+ .kh-copy>p{font-size:16px}.kh-actions{display:grid}.kh-actions .pill{width:100%;justify-content:center}
+ .kh-journey{margin-top:40px}.kh-journey li{font-size:10px}.kh-journey b{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.kh-ring,.kh-wave-track,.kh-mark,.kh-mark svg,.kh-dot,.kh-mpulse{animation:none}.kh-mpulse{stroke-dashoffset:0}.kh-ring{display:none}}

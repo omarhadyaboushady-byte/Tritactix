@@ -239,3 +239,4 @@ h1,h2,h3,p{margin-top:0}h1,h2{margin-bottom:0;font-weight:600;letter-spacing:-.0
 .kshf-markets{padding:0 16px 16px;display:grid;grid-template-columns:1fr 1.4fr;gap:10px}
 .kshf-markets span{padding:13px;border-radius:13px;background:rgba(156,247,239,.07);font-size:11px;color:#a9c6c4}
 .kshf-markets b{display:block;font-size:22px;color:#9CF7EF;margin-bottom:3px}
+.product-title-lockup img.kshf-tile{background:#05202C;border:1px solid rgba(156,247,239,.25);padding:5px 3px;object-fit:contain}
