@@ -9,25 +9,36 @@ const mb=$('.menu'),lk=$('.links');if(mb){mb.onclick=()=>{const o=lk.classList.t
 (function(){const bs=$$('#who button');if(!bs.length)return;let cur=0,user=false;
 function go(i){cur=i;bs.forEach((b,j)=>{b.classList.toggle('on',j===i);b.setAttribute('aria-pressed',j===i)});const d=T.who[i];
  ['whoB','whoT'].forEach((id,k)=>{const e=document.getElementById(id);e.style.opacity=0;setTimeout(()=>{e.textContent=d[k];e.style.opacity=1},200)});
- const c=$('#whoCta');c.textContent=d[2];c.href=d[5]>=0?'#products':'#cases';c.dataset.app=d[5];c.dataset.case=d[6]??'';
+ const c=$('#whoCta');c.textContent=d[2];c.href=d[5]>=0?APPS[d[5]].href:'#cases';c.dataset.app=d[5];c.dataset.case=d[6]??'';
  ['w1','w2','w3'].forEach((id,k)=>{const im=document.getElementById(id);im.style.opacity=0;setTimeout(()=>{im.setAttribute('href',T.hero[i][k]);im.style.opacity=1},300+k*90)});
  const t=$('#tag1');t.style.opacity=0;setTimeout(()=>{const img=t.querySelector('img');img.src=d[3];img.className=d[3]===IC.k?'kt':'';t.querySelector('b').textContent=d[0].split(' +')[0];t.querySelector('span').textContent=d[4];t.style.opacity=1},300)}
  bs.forEach((b,i)=>b.onclick=()=>{user=true;go(i)});if(!reduce)setInterval(()=>{if(!user&&!document.hidden)go((cur+1)%bs.length)},5000);
- $('#whoCta').addEventListener('click',e=>{const a=+e.currentTarget.dataset.app,cs=e.currentTarget.dataset.case;if(a>=0)setTimeout(()=>openApp(a,true),400);else if(cs!=='')setTimeout(()=>$$('#csTabs button')[+cs].click(),400)});})();
+ $('#whoCta').addEventListener('click',e=>{const a=+e.currentTarget.dataset.app,cs=e.currentTarget.dataset.case;if(a>=0)return;else if(cs!=='')setTimeout(()=>$$('#csTabs button')[+cs].click(),400)});})();
 /* hero parallax */
 const art=$('#haArt');if(art&&!reduce){const ts=[...art.querySelectorAll('.t')];addEventListener('pointermove',e=>{if(innerWidth<1000)return;const r=art.getBoundingClientRect(),x=(e.clientX-(r.left+r.width/2))/r.width,y=(e.clientY-(r.top+r.height/2))/r.height;ts.forEach(t=>{const d=+t.dataset.d;t.style.transform=`translate(${x*d*-26+d*Math.abs(x)*10}px,${y*16+d*Math.abs(y)*30}px)`})},{passive:true})}
 /* products: app window */
+function fitApp(){const s=view.querySelector('.scl');if(s)s.style.transform=`scale(${view.clientWidth/1200})`}
+addEventListener('resize',()=>fitApp());
+/* live ticking numbers */
+setInterval(()=>{if(document.hidden)return;document.querySelectorAll('[data-tick]').forEach(e=>{const v=+e.dataset.tick+Math.random()*.02;e.dataset.tick=v;e.textContent=v.toFixed(+(e.dataset.dec||0))})},1500);
 const APPS=T.apps,dock=$$('#dock button'),win=$('#win'),tabs=$('#wtabs'),view=$('#wview');let app=0,tab=0,idle=true;
 function render(){const A=APPS[app],P=A.tabs[tab];win.style.setProperty('--accent',A.color);win.style.setProperty('--tint',A.tint);
  const wi=$('#wicon');wi.src=A.icon;wi.className=A.k?'kt':'';$('#wname').textContent=A.name;$('#wtag').textContent=A.tag;const wl=$('#wlink');wl.textContent=A.linkText;wl.href=A.href;
  tabs.innerHTML=A.tabs.map((t,i)=>`<button type="button" class="${i===tab?'on':''}" data-t="${i}">${esc(t.label)}</button>`).join('');
- view.innerHTML=`<div class="shot">${P.img?`<img src="${P.img}" alt="${esc(A.name+' · '+P.label)}" loading="lazy">`:P.html}${P.hs.map(([x,y,txt])=>`<button type="button" class="hs ${x<25?'l':x>75?'r':''} ${y<22?'b':''}" style="left:${x}%;top:${y}%;background:${A.color}" aria-label="${esc(txt)}"><span>${esc(txt)}</span></button>`).join('')}</div>`;
+ view.innerHTML=`<div class="shot"><div class="scl">${P.html}</div>${P.hs.map(([x,y,txt])=>`<button type="button" class="hs ${x<25?'l':x>75?'r':''} ${y<22?'b':''}" style="left:${x}%;top:${y}%;background:${A.color}" aria-label="${esc(txt)}"><span>${esc(txt)}</span></button>`).join('')}</div>`;
+ fitApp();
  tabs.querySelectorAll('button').forEach(b=>b.onclick=()=>{idle=false;tab=+b.dataset.t;render()});
  view.querySelectorAll('.hs').forEach(h=>h.onclick=()=>view.querySelectorAll('.hs').forEach(x=>x.classList.toggle('show',x===h&&!x.classList.contains('show'))));
  const f=view.querySelector('.hs');if(f&&idle&&!reduce){setTimeout(()=>f.classList.add('show'),700);setTimeout(()=>f.classList.remove('show'),3600)}}
-function openApp(i,scroll){app=i;tab=0;dock.forEach((d,j)=>{d.classList.toggle('on',j===i);d.setAttribute('aria-pressed',j===i)});win.style.animation='none';void win.offsetWidth;win.style.animation='';render();if(scroll)$('#desk').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})}
+function pinfo(i){const P=T.pinfo[i],L=T.pil,A=APPS[i],el=$('#pinfo');if(!el)return;el.style.setProperty('--c',A.color);el.style.setProperty('--t',A.tint);
+ el.innerHTML=`<div class="pi-top"><img src="${A.icon}" class="${A.k?'kt':''}" alt=""><div><b>${esc(A.name)}</b><small>by Tritactix · ${esc(P.purpose)}</small></div><span class="pi-st ${i===0||i===3?'live':''}">${esc(P.st)}</span></div>
+ <div class="pi-g"><div class="pi-c"><span>${L.who}</span><p>${esc(P.who)}</p><span>${L.mission}</span><p>${esc(P.mission)}</p><span>${L.vision}</span><p>${esc(P.vision)}</p></div>
+ <div class="pi-c"><span>${L.obj}</span><ul>${P.obj.map(o=>`<li>${esc(o)}</li>`).join('')}</ul><span>${L.feat}</span><div class="pi-tags">${P.feat.map(o=>`<i>${esc(o)}</i>`).join('')}</div></div>
+ <div class="pi-v"><span>${L.val}</span><p>${esc(P.val)}</p><div class="pi-a"><a class="btn btn-or" href="#contact">${L.demo} ↗</a><a class="btn ghost" href="${A.href}">${L.visit} ${esc(A.name)}</a></div></div></div>`;
+ el.classList.remove('in');void el.offsetWidth;el.classList.add('in')}
+function openApp(i,scroll){app=i;tab=0;pinfo(i);dock.forEach((d,j)=>{d.classList.toggle('on',j===i);d.setAttribute('aria-pressed',j===i)});win.style.animation='none';void win.offsetWidth;win.style.animation='';render();if(scroll)$('#desk').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})}
 dock.forEach((d,i)=>d.onclick=()=>{idle=false;openApp(i)});openApp(0);
-$$('.lu').forEach(b=>b.onclick=()=>{idle=false;openApp(+b.dataset.app,true)});
+
 let visD=false;new IntersectionObserver(e=>visD=e[0].isIntersecting).observe($('#desk'));
 if(!reduce)setInterval(()=>{if(!idle||!visD||document.hidden)return;const A=APPS[app];if(tab<A.tabs.length-1){tab++;render()}else openApp((app+1)%APPS.length)},4500);
 $('#desk').addEventListener('pointerenter',()=>idle=false);
@@ -75,6 +86,8 @@ const fit=i=>{if(i.classList.contains('wide'))return;const cs=getComputedStyle(i
 F.querySelectorAll('input.f').forEach(i=>{fit(i);i.addEventListener('input',()=>fit(i));i.addEventListener('blur',()=>fit(i));i.addEventListener('focus',()=>i.classList.remove('filled'))});
 document.fonts&&document.fonts.ready.then(()=>F.querySelectorAll('input.f').forEach(fit));addEventListener('resize',()=>F.querySelectorAll('input.f').forEach(fit));
 fi('name').addEventListener('input',()=>set('tkFrom',fi('name').value||T.l.you));fi('company').addEventListener('input',()=>set('tkCo',fi('company').value||T.l.yourco));fi('phone').addEventListener('input',()=>set('tkPhone',fi('phone').value||'—'));
+const pp=new URLSearchParams(location.search).get('p');const PI={mallos:0,commercialos:1,quoteos:2,kshf:3}[pp];
+if(PI!==undefined){const d1=F.querySelector('[data-dd=need]');d1.querySelector('.ddb').click();d1.querySelector('.opt[data-i="0"]').click();const d2=F.querySelector('[data-dd=detail]');if(d2){d2.querySelector('.ddb').click();d2.querySelector(`.opt[data-i="${PI}"]`).click()}}
 const btn=$('#cxSend');
 F.addEventListener('submit',async e=>{e.preventDefault();const tk=$('#tk');
  if(!fi('need').value){const d=F.querySelector('[data-dd=need]');d.classList.remove('need-err');void d.offsetWidth;d.classList.add('need-err');d.querySelector('.ddb').focus();return}
