@@ -17,7 +17,7 @@ function go(i){cur=i;bs.forEach((b,j)=>{b.classList.toggle('on',j===i);b.setAttr
 /* hero parallax */
 const art=$('#haArt');if(art&&!reduce){const ts=[...art.querySelectorAll('.t')];addEventListener('pointermove',e=>{if(innerWidth<1000)return;const r=art.getBoundingClientRect(),x=(e.clientX-(r.left+r.width/2))/r.width,y=(e.clientY-(r.top+r.height/2))/r.height;ts.forEach(t=>{const d=+t.dataset.d;t.style.transform=`translate(${x*d*-26+d*Math.abs(x)*10}px,${y*16+d*Math.abs(y)*30}px)`})},{passive:true})}
 /* products: app window */
-function fitApp(){const s=view.querySelector('.scl');if(s)s.style.transform=`scale(${view.clientWidth/1200})`}
+function fitApp(){const s=view.querySelector('.scl');if(s)s.style.transform=`scale(${innerWidth<=640?.54:view.clientWidth/1200})`}
 addEventListener('resize',()=>fitApp());
 /* live ticking numbers */
 setInterval(()=>{if(document.hidden)return;document.querySelectorAll('[data-tick]').forEach(e=>{const v=+e.dataset.tick+Math.random()*.02;e.dataset.tick=v;e.textContent=v.toFixed(+(e.dataset.dec||0))})},1500);
@@ -35,6 +35,7 @@ function pinfo(i){const P=T.pinfo[i],L=T.pil,A=APPS[i],el=$('#pinfo');if(!el)ret
  <div class="pi-g"><div class="pi-c"><span>${L.who}</span><p>${esc(P.who)}</p><span>${L.mission}</span><p>${esc(P.mission)}</p><span>${L.vision}</span><p>${esc(P.vision)}</p></div>
  <div class="pi-c"><span>${L.obj}</span><ul>${P.obj.map(o=>`<li>${esc(o)}</li>`).join('')}</ul><span>${L.feat}</span><div class="pi-tags">${P.feat.map(o=>`<i>${esc(o)}</i>`).join('')}</div></div>
  <div class="pi-v"><span>${L.val}</span><p>${esc(P.val)}</p><div class="pi-a"><a class="btn btn-or" href="#contact">${L.demo} ↗</a><a class="btn ghost" href="${A.href}">${L.visit} ${esc(A.name)}</a></div></div></div>`;
+ el.insertAdjacentHTML('beforeend',`<button type="button" class="pi-more" aria-expanded="false">${esc(T.more)} <i>▾</i></button>`);el.querySelector('.pi-more').onclick=e=>{const o=el.classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',o)};
  el.classList.remove('in');void el.offsetWidth;el.classList.add('in')}
 function openApp(i,scroll){app=i;tab=0;pinfo(i);dock.forEach((d,j)=>{d.classList.toggle('on',j===i);d.setAttribute('aria-pressed',j===i)});win.style.animation='none';void win.offsetWidth;win.style.animation='';render();if(scroll)$('#desk').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})}
 dock.forEach((d,i)=>d.onclick=()=>{idle=false;openApp(i)});openApp(0);

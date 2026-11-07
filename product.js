@@ -2,7 +2,7 @@
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mb=$('.menu'),lk=$('.links');if(mb){mb.onclick=()=>{const o=lk.classList.toggle('open');mb.setAttribute('aria-expanded',o)}}
 const tabs=$('#wtabs'),view=$('#wview');let tab=0,user=false;
-function fit(){const s=view.querySelector('.scl');if(s)s.style.transform=`scale(${view.clientWidth/1200})`}
+function fit(){const s=view.querySelector('.scl');if(s)s.style.transform=`scale(${innerWidth<=640?.54:view.clientWidth/1200})`}
 function render(){const P=A.tabs[tab];tabs.innerHTML=A.tabs.map((t,i)=>`<button type="button" class="${i===tab?'on':''}" data-t="${i}">${esc(t.label)}</button>`).join('');
  view.innerHTML=`<div class="shot"><div class="scl">${P.html}</div>${P.hs.map(([x,y,t])=>`<button type="button" class="hs ${x<25?'l':x>75?'r':''} ${y<22?'b':''}" style="left:${x}%;top:${y}%;background:${A.color}" aria-label="${esc(t)}"><span>${esc(t)}</span></button>`).join('')}</div>`;fit();
  tabs.querySelectorAll('button').forEach(b=>b.onclick=()=>{user=true;tab=+b.dataset.t;render()});
